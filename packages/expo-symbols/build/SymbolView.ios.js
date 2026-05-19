@@ -1,7 +1,7 @@
 import { Fragment as _Fragment, jsx as _jsx } from "react/jsx-runtime";
-import { requireNativeViewManager } from 'expo-modules-core';
+import { requireNativeView } from 'expo';
 import { processColor } from 'react-native';
-const NativeView = requireNativeViewManager('SymbolModule');
+const NativeView = requireNativeView('SymbolModule');
 export function SymbolView(props) {
     if (!NativeView) {
         return _jsx(_Fragment, { children: props.fallback });

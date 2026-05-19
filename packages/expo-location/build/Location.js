@@ -1,5 +1,5 @@
 import { createPermissionHook, isRunningInExpoGo } from 'expo';
-import { Platform } from 'expo-modules-core';
+import { Platform } from 'expo';
 import ExpoLocation from './ExpoLocation';
 import { LocationAccuracy } from './Location.types';
 import { LocationSubscriber, HeadingSubscriber, LocationErrorSubscriber, MotionActivitySubscriber, } from './LocationSubscribers';

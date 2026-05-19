@@ -1,5 +1,4 @@
-import { createPermissionHook } from 'expo';
-import { UnavailabilityError } from 'expo-modules-core';
+import { createPermissionHook, UnavailabilityError, } from 'expo';
 import { Platform } from 'react-native';
 import ExpoBrightness from './ExpoBrightness';
 // @needsAudit
@@ -19,7 +18,6 @@ export var BrightnessMode;
      */
     BrightnessMode[BrightnessMode["MANUAL"] = 2] = "MANUAL";
 })(BrightnessMode || (BrightnessMode = {}));
-// TODO(@kitten): Remove re-exports from EMC
 export { PermissionStatus, } from 'expo';
 /**
  * Returns whether the Brightness API is enabled on the current device. This does not check the app

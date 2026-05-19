@@ -1,4 +1,4 @@
-import { requireNativeModule } from 'expo-modules-core';
+import { requireNativeModule } from 'expo';
 let IS_LIQUID_GLASS_AVAILABLE;
 /**
  * Indicates whether the app is using the Liquid Glass design. The value will be `true` when the

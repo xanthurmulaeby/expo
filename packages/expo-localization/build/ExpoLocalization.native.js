@@ -1,4 +1,4 @@
-import { requireNativeModule } from 'expo-modules-core';
+import { requireNativeModule } from 'expo';
 const ExpoLocalizationModule = requireNativeModule('ExpoLocalization');
 export function addLocaleListener(
 // NOTE(@kitten): We never use the event's data

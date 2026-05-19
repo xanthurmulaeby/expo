@@ -11,7 +11,7 @@
         "ReactNativeDependencies",
         "React",
         "Hermes",
-        "expo-modules-core/ExpoModulesCore"
+        "expo/ExpoModulesCore"
       ],
       "targets": [
         {
@@ -23,7 +23,7 @@
             "Hermes",
             "React",
             "ReactNativeDependencies",
-            "expo-modules-core/ExpoModulesCore"
+            "expo/ExpoModulesCore"
           ],
           "linkedFrameworks": [
             "Foundation",

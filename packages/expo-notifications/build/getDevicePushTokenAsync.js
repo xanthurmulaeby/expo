@@ -1,4 +1,4 @@
-import { UnavailabilityError, Platform } from 'expo-modules-core';
+import { UnavailabilityError, Platform } from 'expo';
 import PushTokenManager from './PushTokenManager';
 import { warnOfExpoGoPushUsage } from './warnOfExpoGoPushUsage';
 let nativeTokenPromise = null;

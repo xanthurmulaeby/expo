@@ -1,5 +1,4 @@
-import { isRunningInExpoGo } from 'expo';
-import { requireOptionalNativeModule } from 'expo-modules-core';
+import { isRunningInExpoGo, requireOptionalNativeModule } from 'expo';
 const SplashModule = requireOptionalNativeModule('ExpoSplashScreen');
 export function setOptions(options) {
     if (!SplashModule) {

@@ -11,7 +11,7 @@
         "ReactNativeDependencies",
         "React",
         "Hermes",
-        "expo-modules-core/ExpoModulesCore"
+        "expo/ExpoModulesCore"
       ],
       "targets": [
         {
@@ -48,7 +48,7 @@
             "ReactNativeDependencies",
             "React",
             "Hermes",
-            "expo-modules-core/ExpoModulesCore",
+            "expo/ExpoModulesCore",
             "ExpoMediaLibrary_ios_objc"
           ],
           "linkedFrameworks": [

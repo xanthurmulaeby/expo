@@ -1,5 +1,5 @@
 import { createPermissionHook, isRunningInExpoGo, type PermissionResponse } from 'expo';
-import { Platform } from 'expo-modules-core';
+import { Platform } from 'expo';
 
 import ExpoLocation from './ExpoLocation';
 import type {

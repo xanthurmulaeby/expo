@@ -1,4 +1,4 @@
-import { Platform, UnavailabilityError } from 'expo-modules-core';
+import { Platform, UnavailabilityError } from 'expo';
 import { Dimensions } from 'react-native';
 import ExpoScreenOrientation from './ExpoScreenOrientation';
 import { Orientation, OrientationLock, WebOrientationLock, } from './ScreenOrientation.types';

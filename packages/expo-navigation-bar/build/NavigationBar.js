@@ -1,4 +1,4 @@
-import { UnavailabilityError } from 'expo-modules-core';
+import { UnavailabilityError } from 'expo';
 import { useEffect, useState } from 'react';
 /**
  * A component that allows you to configure your navigation bar declaratively.

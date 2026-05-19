@@ -5,7 +5,7 @@ import {
   type PermissionHookOptions,
   type PermissionResponse,
 } from 'expo';
-import { CodedError, UnavailabilityError } from 'expo-modules-core';
+import { CodedError, UnavailabilityError } from 'expo';
 
 import ExponentImagePicker from './ExponentImagePicker';
 import type {

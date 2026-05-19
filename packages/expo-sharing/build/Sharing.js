@@ -1,4 +1,4 @@
-import { UnavailabilityError } from 'expo-modules-core';
+import { UnavailabilityError } from 'expo';
 import SharingNativeModule from './SharingNativeModule';
 // @needsAudit
 /**

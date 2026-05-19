@@ -1,8 +1,8 @@
-import { requireNativeViewManager } from 'expo-modules-core';
+import { requireNativeView } from 'expo';
 import { Platform } from 'react-native';
 let ExpoAppleAuthenticationButton;
 if (Platform.OS === 'ios') {
-    ExpoAppleAuthenticationButton = requireNativeViewManager('ExpoAppleAuthentication');
+    ExpoAppleAuthenticationButton = requireNativeView('ExpoAppleAuthentication');
 }
 export default ExpoAppleAuthenticationButton;
 //# sourceMappingURL=ExpoAppleAuthenticationButton.js.map

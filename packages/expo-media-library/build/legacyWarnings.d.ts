@@ -1,4 +1,4 @@
-import type { EventSubscription } from 'expo-modules-core';
+import type { EventSubscription } from 'expo';
 import type { Album, AlbumRef, AlbumsOptions, Asset, AssetInfo, AssetRef, AssetsOptions, MediaLibraryAssetInfoQueryOptions, MediaTypeFilter, PagedInfo } from './legacy/MediaLibrary';
 /**
  * @deprecated Import this method from `expo-media-library/legacy`. This method will throw in runtime.

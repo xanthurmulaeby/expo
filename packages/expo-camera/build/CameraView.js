@@ -1,5 +1,5 @@
 import { jsx as _jsx } from "react/jsx-runtime";
-import { Platform, UnavailabilityError } from 'expo-modules-core';
+import { Platform, UnavailabilityError } from 'expo';
 import { Component, createRef } from 'react';
 import ExpoCamera from './ExpoCamera';
 import CameraManager from './ExpoCameraManager';

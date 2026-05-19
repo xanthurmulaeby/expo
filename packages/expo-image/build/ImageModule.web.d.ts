@@ -1,4 +1,4 @@
-import { NativeModule } from 'expo-modules-core';
+import { NativeModule } from 'expo';
 import type { ImageCacheConfig, ImageRef, ImageSource, ImageNativeModule } from './Image.types';
 declare class ImageModule extends NativeModule implements ImageNativeModule {
     Image: typeof ImageRef;

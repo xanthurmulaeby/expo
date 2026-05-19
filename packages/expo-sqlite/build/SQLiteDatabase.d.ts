@@ -1,4 +1,4 @@
-import type { EventSubscription } from 'expo-modules-core';
+import type { EventSubscription } from 'expo';
 import { type NativeDatabase, type SQLiteOpenOptions } from './NativeDatabase';
 import { SQLiteSession } from './SQLiteSession';
 import type { SQLiteBindParams, SQLiteRunResult, SQLiteVariadicBindParams } from './SQLiteStatement';

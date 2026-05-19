@@ -1,4 +1,4 @@
-import { type EventSubscription } from 'expo-modules-core';
+import { type EventSubscription } from 'expo';
 import { Component } from 'react';
 import type { CameraCapturedPicture, CameraOrientation, CameraPictureOptions, CameraViewProps, CameraRecordingOptions, CameraViewRef, ScanningOptions, ScanningResult, VideoCodec, AvailableLenses } from './Camera.types';
 import type { PictureRef } from './PictureRef';

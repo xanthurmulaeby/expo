@@ -1,6 +1,6 @@
-import { type EventSubscription } from 'expo-modules-core';
+import { type EventSubscription } from 'expo';
 import type { ClipboardImage, ClipboardEvent, GetImageOptions, GetStringOptions, SetStringOptions } from './Clipboard.types';
-export type { EventSubscription as Subscription } from 'expo-modules-core';
+export type { EventSubscription as Subscription } from 'expo';
 /**
  * Gets the content of the user's clipboard. Calling this method on web will prompt
  * the user to grant your app permission to "see text and images copied to the clipboard."

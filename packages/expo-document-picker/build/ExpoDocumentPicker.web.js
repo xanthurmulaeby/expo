@@ -1,4 +1,4 @@
-import { Platform } from 'expo-modules-core';
+import { Platform } from 'expo';
 export default {
     async getDocumentAsync({ type = '*/*', multiple = false, base64 = false, }) {
         // SSR guard

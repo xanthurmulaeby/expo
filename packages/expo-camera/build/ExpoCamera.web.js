@@ -1,5 +1,5 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { CodedError } from 'expo-modules-core';
+import { CodedError } from 'expo';
 import { useRef, useMemo, useImperativeHandle, } from 'react';
 import { StyleSheet, View } from 'react-native';
 import createElement from 'react-native-web/dist/exports/createElement';

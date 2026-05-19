@@ -1,8 +1,8 @@
 // Copyright © 2024 650 Industries.
 'use client';
 import { jsx as _jsx } from "react/jsx-runtime";
-import { requireNativeViewManager } from 'expo-modules-core';
-const NativeGlassView = requireNativeViewManager('ExpoGlassEffect', 'GlassView');
+import { requireNativeView } from 'expo';
+const NativeGlassView = requireNativeView('ExpoGlassEffect', 'GlassView');
 const GlassView = (props) => {
     return _jsx(NativeGlassView, { ...props });
 };

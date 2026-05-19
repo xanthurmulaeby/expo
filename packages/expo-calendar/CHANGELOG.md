@@ -40,7 +40,7 @@
 
 ### 💡 Others
 
-- Updated permission hook imports to be imported from `expo` instead of `expo-modules-core` ([#45565](https://github.com/expo/expo/pull/45565) by [@Wenszel](https://github.com/Wenszel))
+- Updated permission hook imports to be imported from `expo` instead of `expo` ([#45565](https://github.com/expo/expo/pull/45565) by [@Wenszel](https://github.com/Wenszel))
 
 ## 56.0.4 — 2026-05-07
 
@@ -475,7 +475,7 @@ _This version does not introduce any user-facing changes._
 ### 💡 Others
 
 - Rewrote from Java to Kotlin, migrated from `AsyncTask` to `kotlinx.coroutines`. ([#13527](https://github.com/expo/expo/pull/13527) by [@M1ST4KE](https://github.com/M1ST4KE))
-- Migrated from `@unimodules/core` to `expo-modules-core`. ([#13756](https://github.com/expo/expo/pull/13756) by [@tsapeta](https://github.com/tsapeta))
+- Migrated from `@unimodules/core` to `expo`. ([#13756](https://github.com/expo/expo/pull/13756) by [@tsapeta](https://github.com/tsapeta))
 - Updated `@expo/config-plugins` ([#14443](https://github.com/expo/expo/pull/14443) by [@EvanBacon](https://github.com/EvanBacon))
 
 ## 9.2.0 — 2021-06-16
@@ -487,7 +487,7 @@ _This version does not introduce any user-facing changes._
 
 ### 💡 Others
 
-- Migrated from `unimodules-permissions-interface` to `expo-modules-core`. ([#12961](https://github.com/expo/expo/pull/12961) by [@tsapeta](https://github.com/tsapeta))
+- Migrated from `unimodules-permissions-interface` to `expo`. ([#12961](https://github.com/expo/expo/pull/12961) by [@tsapeta](https://github.com/tsapeta))
 
 ## 9.1.2 — 2021-04-13
 

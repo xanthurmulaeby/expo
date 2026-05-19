@@ -1,4 +1,4 @@
-import { useReleasingSharedObject } from 'expo-modules-core';
+import { useReleasingSharedObject } from 'expo';
 import NativeVideoModule from './NativeVideoModule';
 import resolveAssetSource from './resolveAssetSource';
 // TODO: Temporary solution until we develop a way of overriding prototypes that won't break the lazy loading of the module.

@@ -1,4 +1,4 @@
-import type { TypedArray } from 'expo-modules-core';
+import { type TypedArray } from 'expo';
 import type { CryptoDigestAlgorithm, CryptoDigestOptions } from './Crypto.types';
 declare const _default: {
     digestStringAsync(algorithm: CryptoDigestAlgorithm, data: string, options: CryptoDigestOptions): Promise<string>;

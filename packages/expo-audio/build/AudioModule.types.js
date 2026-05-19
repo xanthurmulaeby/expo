@@ -1,2 +1,2 @@
-import { NativeModule, SharedObject } from 'expo-modules-core';
+import { NativeModule, SharedObject } from 'expo';
 //# sourceMappingURL=AudioModule.types.js.map

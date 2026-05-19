@@ -1,4 +1,4 @@
-import { UnavailabilityError } from 'expo-modules-core';
+import { UnavailabilityError } from 'expo';
 import BackgroundNotificationTasksModule from './BackgroundNotificationTasksModule';
 /**
  * Call `registerTaskAsync` to set a callback (task) that runs when a notification is received while the app is in foreground, background, or terminated.

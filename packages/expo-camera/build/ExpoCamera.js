@@ -1,4 +1,4 @@
-import { requireNativeViewManager } from 'expo-modules-core';
-const ExpoCamera = requireNativeViewManager('ExpoCamera');
+import { requireNativeView } from 'expo';
+const ExpoCamera = requireNativeView('ExpoCamera');
 export default ExpoCamera;
 //# sourceMappingURL=ExpoCamera.js.map

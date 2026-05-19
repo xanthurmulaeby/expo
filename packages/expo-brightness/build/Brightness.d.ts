@@ -1,5 +1,4 @@
-import { type PermissionResponse } from 'expo';
-import { type EventSubscription } from 'expo-modules-core';
+import { type PermissionResponse, type EventSubscription } from 'expo';
 export declare enum BrightnessMode {
     /**
      * Means that the current brightness mode cannot be determined.

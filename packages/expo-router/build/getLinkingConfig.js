@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getNavigationConfig = getNavigationConfig;
 exports.getLinkingConfig = getLinkingConfig;
-const expo_modules_core_1 = require("expo-modules-core");
+const expo_1 = require("expo");
 const constants_1 = require("./constants");
 const getReactNavigationConfig_1 = require("./getReactNavigationConfig");
 const getRoutesRedirects_1 = require("./getRoutesRedirects");
@@ -61,7 +61,7 @@ function getLinkingConfig(routes, context, getRouteInfo, { metaOnly = true, serv
             // Expo Router calls `getInitialURL` twice, which may confuse the user if they provide a custom `getInitialURL`.
             // Therefor we memoize the result.
             if (!hasCachedInitialUrl) {
-                if (expo_modules_core_1.Platform.OS === 'web') {
+                if (expo_1.Platform.OS === 'web') {
                     initialUrl = serverUrl ?? (0, linking_1.getInitialURL)();
                 }
                 else {

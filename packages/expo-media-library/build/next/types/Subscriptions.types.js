@@ -1,2 +1,2 @@
-export {} from 'expo-modules-core';
+export {} from 'expo';
 //# sourceMappingURL=Subscriptions.types.js.map

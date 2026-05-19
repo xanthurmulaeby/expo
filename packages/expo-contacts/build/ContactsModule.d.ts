@@ -1,4 +1,4 @@
-import type { EventSubscription } from 'expo-modules-core';
+import type { EventSubscription } from 'expo';
 import expoContactsModule from './ExpoContactsNext';
 /**
  * Represents a contact in the device's address book.

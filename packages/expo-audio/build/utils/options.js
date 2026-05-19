@@ -1,4 +1,4 @@
-import { Platform } from 'expo-modules-core';
+import { Platform } from 'expo';
 export function createRecordingOptions(options) {
     const commonOptions = {
         extension: options.extension,

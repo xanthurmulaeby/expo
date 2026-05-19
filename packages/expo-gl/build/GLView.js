@@ -1,11 +1,11 @@
 import { jsx as _jsx } from "react/jsx-runtime";
-import { UnavailabilityError, requireNativeModule, requireNativeViewManager, CodedError, } from 'expo-modules-core';
+import { UnavailabilityError, requireNativeModule, requireNativeView, CodedError } from 'expo';
 import * as React from 'react';
 import { Platform, View, findNodeHandle } from 'react-native';
 import { configureLogging } from './GLUtils';
 import { createWorkletContextManager } from './GLWorkletContextManager';
 const GLNativeModule = requireNativeModule('ExpoGL');
-const NativeView = requireNativeViewManager('ExpoGL');
+const NativeView = requireNativeView('ExpoGL');
 const workletContextManager = createWorkletContextManager();
 export function getWorkletContext(contextId) {
     'worklet';

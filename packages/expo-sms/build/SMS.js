@@ -1,4 +1,4 @@
-import { UnavailabilityError, Platform } from 'expo-modules-core';
+import { UnavailabilityError, Platform } from 'expo';
 import ExpoSMS from './ExpoSMS';
 function processAttachments(attachments) {
     if (!attachments) {

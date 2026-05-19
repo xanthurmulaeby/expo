@@ -36,7 +36,7 @@ _This version does not introduce any user-facing changes._
 
 ### 💡 Others
 
-- Updated permission type and permission status imports to be imported from `expo` instead of `expo-modules-core` ([#45565](https://github.com/expo/expo/pull/45565) by [@Wenszel](https://github.com/Wenszel))
+- Updated permission type and permission status imports to be imported from `expo` instead of `expo` ([#45565](https://github.com/expo/expo/pull/45565) by [@Wenszel](https://github.com/Wenszel))
 
 ## 56.0.3 — 2026-05-06
 
@@ -412,7 +412,7 @@ _This version does not introduce any user-facing changes._
 
 ### 💡 Others
 
-- Fork `uuid@3.4.0` and move into `expo-modules-core`. Remove the original dependency. ([#23249](https://github.com/expo/expo/pull/23249) by [@alanhughes](https://github.com/alanjhughes))
+- Fork `uuid@3.4.0` and move into `expo`. Remove the original dependency. ([#23249](https://github.com/expo/expo/pull/23249) by [@alanhughes](https://github.com/alanjhughes))
 
 ## 12.2.0 — 2023-06-21
 
@@ -509,7 +509,7 @@ _This version does not introduce any user-facing changes._
 
 ### 💡 Others
 
-- Migrated from `unimodules-file-system-interface` and `unimodules-permissions-interface` to `expo-modules-core`. ([#12961](https://github.com/expo/expo/pull/12961) by [@tsapeta](https://github.com/tsapeta))
+- Migrated from `unimodules-file-system-interface` and `unimodules-permissions-interface` to `expo`. ([#12961](https://github.com/expo/expo/pull/12961) by [@tsapeta](https://github.com/tsapeta))
 - Build Android code using Java 8 to fix Android instrumented test build error. ([#12939](https://github.com/expo/expo/pull/12939) by [@kudo](https://github.com/kudo))
 - Refactored uuid imports to v7 style. ([#13037](https://github.com/expo/expo/pull/13037) by [@giautm](https://github.com/giautm))
 

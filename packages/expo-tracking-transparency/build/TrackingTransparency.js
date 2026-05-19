@@ -1,5 +1,4 @@
-import { createPermissionHook, PermissionStatus, } from 'expo';
-import { UnavailabilityError } from 'expo-modules-core';
+import { createPermissionHook, PermissionStatus, UnavailabilityError, } from 'expo';
 import { Platform } from 'react-native';
 import ExpoTrackingTransparency from './ExpoTrackingTransparency';
 /**
@@ -135,6 +134,5 @@ export const useTrackingPermissions = createPermissionHook({
 export function isAvailable() {
     return Boolean(ExpoTrackingTransparency);
 }
-// TODO(@kitten): Remove re-exports from EMC
 export { PermissionStatus, };
 //# sourceMappingURL=TrackingTransparency.js.map

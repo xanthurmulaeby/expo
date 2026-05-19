@@ -1,4 +1,4 @@
-import { requireNativeModule } from 'expo-modules-core';
+import { requireNativeModule } from 'expo';
 let IS_GLASS_EFFECT_API_AVAILABLE;
 /**
  * Checks whether the Liquid Glass API is available at runtime on the device.

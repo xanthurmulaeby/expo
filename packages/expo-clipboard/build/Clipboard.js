@@ -1,4 +1,4 @@
-import { UnavailabilityError, Platform } from 'expo-modules-core';
+import { UnavailabilityError, Platform } from 'expo';
 import ExpoClipboard, { clipboardEventName } from './ExpoClipboard';
 /**
  * Gets the content of the user's clipboard. Calling this method on web will prompt

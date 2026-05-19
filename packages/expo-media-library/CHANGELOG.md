@@ -35,7 +35,7 @@
 
 ### 💡 Others
 
-- Updated permission hooks and permission type imports to be imported from `expo` instead of `expo-modules-core` ([#45565](https://github.com/expo/expo/pull/45565) by [@Wenszel](https://github.com/Wenszel))
+- Updated permission hooks and permission type imports to be imported from `expo` instead of `expo` ([#45565](https://github.com/expo/expo/pull/45565) by [@Wenszel](https://github.com/Wenszel))
 
 ## 56.0.3 — 2026-05-06
 
@@ -551,7 +551,7 @@ _This version does not introduce any user-facing changes._
 
 ### 💡 Others
 
-- Migrated from `@unimodules/core` to `expo-modules-core`. ([#13755](https://github.com/expo/expo/pull/13755) by [@tsapeta](https://github.com/tsapeta))
+- Migrated from `@unimodules/core` to `expo`. ([#13755](https://github.com/expo/expo/pull/13755) by [@tsapeta](https://github.com/tsapeta))
 - Added `AlbumType` and `MediaSubtype` types, added missing `orientation` key to the `Asset` type. ([#13936](https://github.com/expo/expo/pull/13936) by [@Simek](https://github.com/Simek))
 - Remove `assets-library://` uri scheme usage in favour of `ph://` ([#14173](https://github.com/expo/expo/pull/14173) by [@ajsmth](https://github.com/ajsmth))
 - Updated `@expo/config-plugins` ([#14443](https://github.com/expo/expo/pull/14443) by [@EvanBacon](https://github.com/EvanBacon))
@@ -564,7 +564,7 @@ _This version does not introduce any user-facing changes._
 
 ### 💡 Others
 
-- Migrated from `unimodules-file-system-interface` and `unimodules-permissions-interface` to `expo-modules-core`. ([#12961](https://github.com/expo/expo/pull/12961) by [@tsapeta](https://github.com/tsapeta))
+- Migrated from `unimodules-file-system-interface` and `unimodules-permissions-interface` to `expo`. ([#12961](https://github.com/expo/expo/pull/12961) by [@tsapeta](https://github.com/tsapeta))
 
 ## 12.0.2 — 2021-04-13
 

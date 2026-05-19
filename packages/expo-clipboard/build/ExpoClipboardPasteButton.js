@@ -1,8 +1,8 @@
-import { requireNativeViewManager } from 'expo-modules-core';
+import { requireNativeView } from 'expo';
 import { Platform } from 'react-native';
 let ExpoClipboard;
 if (Platform.OS === 'ios') {
-    ExpoClipboard = requireNativeViewManager('ExpoClipboard');
+    ExpoClipboard = requireNativeView('ExpoClipboard');
 }
 export default ExpoClipboard;
 //# sourceMappingURL=ExpoClipboardPasteButton.js.map

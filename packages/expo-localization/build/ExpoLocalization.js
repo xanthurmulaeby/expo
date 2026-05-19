@@ -1,5 +1,5 @@
 /* eslint-env browser */
-import { Platform } from 'expo-modules-core';
+import { Platform } from 'expo';
 const FALLBACK_LOCALE = 'en-US';
 const getNavigatorLocales = () => {
     if (Platform.isDOMAvailable) {

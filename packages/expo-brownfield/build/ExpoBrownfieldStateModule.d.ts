@@ -1,4 +1,4 @@
-import type { EventSubscription } from 'expo-modules-core';
+import type { EventSubscription } from 'expo';
 import type { SharedStateChangeEvent } from './ExpoBrownfieldStateModule.types';
 /**
  * Gets the value of shared state for a given key.

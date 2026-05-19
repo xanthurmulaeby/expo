@@ -1,4 +1,4 @@
-import { CodedError } from 'expo-modules-core';
+import { CodedError } from 'expo';
 export declare class ClipboardUnavailableException extends CodedError {
     constructor();
 }

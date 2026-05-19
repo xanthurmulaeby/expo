@@ -1,4 +1,4 @@
-import { type EventSubscription } from 'expo-modules-core';
+import { type EventSubscription } from 'expo';
 declare const ExpoLocalizationModule: any;
 export declare function addLocaleListener(listener: (event?: unknown) => void): EventSubscription;
 export declare function addCalendarListener(listener: (event?: unknown) => void): EventSubscription;

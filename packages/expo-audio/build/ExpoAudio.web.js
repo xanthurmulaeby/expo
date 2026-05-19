@@ -1,5 +1,5 @@
 import { useEvent } from 'expo';
-import { useReleasingSharedObject } from 'expo-modules-core';
+import { useReleasingSharedObject } from 'expo';
 import { useEffect, useMemo } from 'react';
 import { AUDIO_SAMPLE_UPDATE, PLAYBACK_STATUS_UPDATE, PLAYLIST_STATUS_UPDATE, RECORDING_STATUS_UPDATE, } from './AudioEventKeys';
 import * as AudioModule from './AudioModule.web';

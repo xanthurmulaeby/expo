@@ -1,5 +1,5 @@
 import { jsx as _jsx } from "react/jsx-runtime";
-import { CodedError, Platform, UnavailabilityError } from 'expo-modules-core';
+import { CodedError, Platform, UnavailabilityError } from 'expo';
 import invariant from 'invariant';
 import * as React from 'react';
 import { Dimensions } from 'react-native';

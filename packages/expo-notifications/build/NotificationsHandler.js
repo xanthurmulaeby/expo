@@ -1,4 +1,5 @@
-import { LegacyEventEmitter, CodedError, UnavailabilityError, } from 'expo-modules-core';
+import { CodedError, UnavailabilityError } from 'expo';
+import { LegacyEventEmitter } from 'expo-modules-core';
 import NotificationsHandlerModule from './NotificationsHandlerModule';
 import { mapNotification } from './utils/mapNotificationResponse';
 /**

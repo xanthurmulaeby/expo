@@ -1,4 +1,4 @@
-import { NativeModule } from 'expo-modules-core';
+import { NativeModule } from 'expo';
 import type { NetworkEvents, NetworkState } from './Network.types';
 declare class ExpoNetworkModule extends NativeModule<NetworkEvents> {
     eventListener?: () => void;

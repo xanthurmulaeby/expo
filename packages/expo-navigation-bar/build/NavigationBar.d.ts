@@ -1,4 +1,4 @@
-import { type EventSubscription } from 'expo-modules-core';
+import { type EventSubscription } from 'expo';
 import type { NavigationBarProps, NavigationBarStyle, NavigationBarVisibility, NavigationBarVisibilityEvent } from './NavigationBar.types';
 /**
  * A component that allows you to configure your navigation bar declaratively.

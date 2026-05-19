@@ -1,4 +1,4 @@
-import {} from 'expo-modules-core';
+import {} from 'expo';
 import { NativeMediaLibraryModule } from '../native';
 /**
  * Subscribes for updates in user's media library.

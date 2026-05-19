@@ -1,4 +1,4 @@
-import { type EventSubscription } from 'expo-modules-core';
+import { type EventSubscription } from 'expo';
 import type { AppleAuthenticationCredential, AppleAuthenticationCredentialState, AppleAuthenticationRefreshOptions, AppleAuthenticationSignInOptions, AppleAuthenticationSignOutOptions, AppleAuthenticationFullName, AppleAuthenticationFullNameFormatStyle } from './AppleAuthentication.types';
 /**
  * Determine if the current device's operating system supports Apple authentication.
@@ -68,5 +68,5 @@ export declare function getCredentialStateAsync(user: string): Promise<AppleAuth
  */
 export declare function formatFullName(fullName: AppleAuthenticationFullName, formatStyle?: AppleAuthenticationFullNameFormatStyle): string;
 export declare function addRevokeListener(listener: () => void): EventSubscription;
-export type { EventSubscription as Subscription } from 'expo-modules-core';
+export type { EventSubscription as Subscription } from 'expo';
 //# sourceMappingURL=AppleAuthentication.d.ts.map

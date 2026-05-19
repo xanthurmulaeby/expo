@@ -1,5 +1,5 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { requireNativeViewManager } from 'expo-modules-core';
+import { requireNativeView } from 'expo';
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 export default function NativeLinearGradient({ colors, locations, startPoint, endPoint, children, style, dither, ...props }) {
@@ -21,5 +21,5 @@ export default function NativeLinearGradient({ colors, locations, startPoint, en
     ];
     return (_jsxs(View, { ...props, style: style, children: [_jsx(BaseNativeLinearGradient, { style: StyleSheet.absoluteFill, colors: colors, startPoint: startPoint, endPoint: endPoint, locations: locations, borderRadii: borderRadiiPerCorner, dither: dither }), children] }));
 }
-const BaseNativeLinearGradient = requireNativeViewManager('ExpoLinearGradient');
+const BaseNativeLinearGradient = requireNativeView('ExpoLinearGradient');
 //# sourceMappingURL=NativeLinearGradient.android.js.map

@@ -1,4 +1,4 @@
-import { CodedError } from 'expo-modules-core';
+import { CodedError } from 'expo';
 import { CryptoEncoding } from './Crypto.types';
 const getCrypto = () => {
     if (typeof globalThis.crypto !== 'undefined') {

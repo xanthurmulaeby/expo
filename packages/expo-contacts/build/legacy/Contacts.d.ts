@@ -1,5 +1,4 @@
-import { type PermissionResponse } from 'expo';
-import { type EventSubscription } from 'expo-modules-core';
+import { type PermissionResponse, type EventSubscription } from 'expo';
 import { type ShareOptions } from 'react-native';
 export declare const onContactsChangeEventName = "onContactsChange";
 export type ContactsPermissionResponse = PermissionResponse & {

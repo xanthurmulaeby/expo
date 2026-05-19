@@ -1,4 +1,4 @@
-import type { EventSubscription } from 'expo-modules-core';
+import type { EventSubscription } from 'expo';
 import type { NavigationBarVisibility, NavigationBarVisibilityEvent } from './NavigationBar.types';
 declare const _default: {
     addListener: (event: "ExpoNavigationBar.didChange", listener: (event: NavigationBarVisibilityEvent) => void) => EventSubscription;

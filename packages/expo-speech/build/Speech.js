@@ -1,4 +1,4 @@
-import { UnavailabilityError } from 'expo-modules-core';
+import { UnavailabilityError } from 'expo';
 import ExponentSpeech from './ExponentSpeech';
 export { VoiceQuality, } from './Speech.types';
 const _CALLBACKS = {};
