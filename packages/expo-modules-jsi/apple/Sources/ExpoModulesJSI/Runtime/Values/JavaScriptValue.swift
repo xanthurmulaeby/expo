@@ -628,6 +628,21 @@ public final class JavaScriptValue: JavaScriptType, Equatable, Escapable, Error 
     return value.toJavaScriptValue(in: runtime)
   }
 
+  // MARK: - Raw pointer bridging
+
+  /// Wraps a raw pointer to an existing `facebook::jsi::Value` into a `JavaScriptValue`,
+  /// copying the value against the given runtime. Used to bridge values that originate in
+  /// C++ (e.g. React Native Fabric view props read straight off the props object) into the
+  /// Swift JSI layer so they can be decoded with the regular value APIs.
+  ///
+  /// The pointer must point to a live `jsi::Value` valid on `runtime`'s thread; the call
+  /// must happen on the JavaScript thread. The value is copied, so the source pointer does
+  /// not need to outlive the returned `JavaScriptValue`.
+  public static func from(unsafeValuePointer pointer: UnsafeRawPointer, runtime: JavaScriptRuntime) -> JavaScriptValue {
+    let value = pointer.assumingMemoryBound(to: facebook.jsi.Value.self)
+    return JavaScriptValue(runtime, value.pointee)
+  }
+
   @available(*, deprecated, renamed: "representing(value:in:)")
   public static func from(_ value: Any, runtime: JavaScriptRuntime) -> JavaScriptValue {
     if let value = value as? JavaScriptRepresentable {

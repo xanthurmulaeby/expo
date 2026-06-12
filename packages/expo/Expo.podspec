@@ -20,6 +20,13 @@ reactNativeTargetVersion = reactNativeVersion.split('.')[1].to_i
 
 compiler_flags = get_folly_config()[:compiler_flags]
 
+# Experimental: keep in sync with ExpoModulesCore.podspec. Enables the JS-thread view-props
+# decoding path (used by `ExpoReactNativeFactory` to inject the app context into the host's
+# ContextContainer). Toggle with the env var for benchmarking; off by default.
+if ENV['EXPO_JSI_VIEW_PROPS'] == '1'
+  compiler_flags << ' -DEXPO_JSI_VIEW_PROPS=1'
+end
+
 package = JSON.parse(File.read(File.join(__dir__, 'package.json')))
 
 # Use a global flag to check whether the warning about missing autolinking

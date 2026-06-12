@@ -36,6 +36,15 @@ if new_arch_enabled
   compiler_flags << ' ' << new_arch_compiler_flags
 end
 
+# Experimental: decode Fabric view props straight from their JavaScript values on the JS
+# thread instead of lowering to folly::dynamic / NSDictionary. Toggle with the env var for
+# benchmarking; off by default.
+jsi_view_props_enabled = ENV['EXPO_JSI_VIEW_PROPS'] == '1'
+jsi_view_props_flag = '-DEXPO_JSI_VIEW_PROPS=1'
+if jsi_view_props_enabled
+  compiler_flags << ' ' << jsi_view_props_flag
+end
+
 # List of features that are required by linked modules
 coreFeatures = []
 if defined?(Expo::PackagesConfig)
@@ -86,9 +95,9 @@ Pod::Spec.new do |s|
     'DEFINES_MODULE' => 'YES',
     'CLANG_CXX_LANGUAGE_STANDARD' => 'c++20',
     'SWIFT_COMPILATION_MODE' => 'wholemodule',
-    'OTHER_SWIFT_FLAGS' => "$(inherited) #{new_arch_enabled ? new_arch_compiler_flags : ''}",
+    'OTHER_SWIFT_FLAGS' => "$(inherited) #{new_arch_enabled ? new_arch_compiler_flags : ''}#{jsi_view_props_enabled ? ' -D EXPO_JSI_VIEW_PROPS' : ''}",
     'HEADER_SEARCH_PATHS' => header_search_paths.join(' '),
-    'GCC_PREPROCESSOR_DEFINITIONS' => "$(inherited) EXPO_MODULES_CORE_VERSION=" + package['version'],
+    'GCC_PREPROCESSOR_DEFINITIONS' => "$(inherited) EXPO_MODULES_CORE_VERSION=#{package['version']}#{jsi_view_props_enabled ? ' EXPO_JSI_VIEW_PROPS=1' : ''}",
   }
   s.user_target_xcconfig = {
     "HEADER_SEARCH_PATHS" => [

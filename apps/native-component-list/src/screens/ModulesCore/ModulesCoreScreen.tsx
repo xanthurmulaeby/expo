@@ -28,6 +28,13 @@ if (!isRunningInExpoGo()) {
       return optionalRequire(() => require('./Benchmarks/ModulesBenchmarksScreen'));
     },
   });
+  ModulesCoreScreens.push({
+    name: 'View props decoding benchmark',
+    route: 'modulescore/view-props-benchmark',
+    getComponent() {
+      return optionalRequire(() => require('./ViewPropsBenchmarkScreen'));
+    },
+  });
 }
 
 export default function ModulesCoreScreen() {

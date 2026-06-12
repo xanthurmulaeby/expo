@@ -1,5 +1,6 @@
 import ExpoModulesCore
 import ExpoModulesJSI
+import UIKit
 
 struct Point: Record {
   @Field
@@ -18,6 +19,30 @@ struct SynthesizedPoint {
 final class SharedPoint: SharedObject {
   var x: Double = 0
   var y: Double = 0
+}
+
+// MARK: - View-props benchmark
+
+/// A record-typed prop. Uses the `@Record` macro, which synthesizes a compile-time
+/// `from(object:appContext:)` factory and so bypasses the `Mirror`/`fieldsOf` reflection that
+/// dominated decode cost for `@Field`-based records (see the JSI view-props profiling). The JSI
+/// decode path calls `from(object:)`, which dispatches to this synthesized factory.
+@Record
+struct BenchmarkStyle {
+  var opacity: Double = 1
+  var cornerRadius: Double = 0
+  var label: String = ""
+  var weight: Int = 0
+}
+
+/// A plain UIView with a wide, varied set of JS-thread-decodable props (primitives, strings,
+/// an array, and a record) so a prop-update loop exercises the decoding path meaningfully.
+/// It intentionally does almost no work in the setters — we're measuring decode/apply cost,
+/// not view rendering.
+final class BenchmarkView: ExpoView {
+  var color: UIColor = .clear
+  var decoration = BenchmarkStyle()
+  var values: [Double] = []
 }
 
 @ExpoModule
@@ -84,6 +109,47 @@ public final class BenchmarkingExpoModule: Module {
 
       Property("y") { (point: SharedPoint) in
         return point.y
+      }
+    }
+
+    // MARK: - View-props benchmark
+    //
+    // `getViewPropsBenchmark` / `resetViewPropsBenchmark` read the process-wide counters that
+    // expo-modules-core accumulates around view-prop decode (JS thread) and apply (main
+    // thread). Drive the `BenchmarkView` below with changing props, then read the totals.
+
+    Function("resetViewPropsBenchmark") {
+      ViewPropsBenchmark.reset()
+    }
+
+    Function("getViewPropsBenchmark") { () -> [String: Any] in
+      return ViewPropsBenchmark.snapshot()
+    }
+
+    View(BenchmarkView.self) {
+      Prop("color") { (view: BenchmarkView, color: UIColor) in
+        view.color = color
+      }
+      Prop("decoration") { (view: BenchmarkView, decoration: BenchmarkStyle) in
+        view.decoration = decoration
+      }
+      Prop("values") { (view: BenchmarkView, values: [Double]) in
+        view.values = values
+      }
+      Prop("flag") { (view: BenchmarkView, flag: Bool) in
+        view.tag = flag ? 1 : 0
+      }
+      Prop("count") { (view: BenchmarkView, count: Int) in
+        _ = count
+      }
+      Prop("ratio") { (view: BenchmarkView, ratio: Double) in
+        view.alpha = CGFloat(ratio)
+      }
+      Prop("title") { (view: BenchmarkView, title: String) in
+        view.accessibilityLabel = title
+      }
+      Prop("subtitle") { (view: BenchmarkView, subtitle: String) in
+        view.accessibilityHint = subtitle
       }
     }
 

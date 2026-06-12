@@ -28,6 +28,13 @@ open class ExpoFabricView: ExpoFabricViewObjC, AnyExpoView {
    */
   private var previousProps: [String: Any] = [:]
 
+  /**
+   Prop names handled by `applyDecodedProps(_:)` for the current props update, so the
+   subsequent legacy `updateProps(_:)` pass skips re-applying them. Reset on each
+   `updateProps(_:)` call.
+   */
+  private var jsThreadDecodedKeys: Set<String> = []
+
   // MARK: - Initializers
 
   // swiftlint:disable unavailable_function
@@ -85,7 +92,23 @@ open class ExpoFabricView: ExpoFabricViewObjC, AnyExpoView {
     guard let context = appContext, let propsDict = viewManagerPropDict else {
       return
     }
+    // Props already applied from their JS-thread-decoded values in this update pass must not
+    // be re-applied here. `jsThreadDecodedKeys` is empty unless JSI view-props decoding ran.
+    let decodedKeys = jsThreadDecodedKeys
+    jsThreadDecodedKeys = []
+
+    let applyStart = mach_absolute_time()
+    defer {
+      ViewPropsBenchmark.applyTicks += mach_absolute_time() - applyStart
+      // Counted here (not in `applyDecodedProps`) because `updateProps` runs exactly once per
+      // `finalizeUpdates` on both paths, so it's the canonical "apply pass" count.
+      ViewPropsBenchmark.applyPassCount += 1
+    }
+
     for (key, prop) in propsDict {
+      if decodedKeys.contains(key) {
+        continue
+      }
       let newValue = props[key] as Any
       let convertedNewValue = Conversions.fromNSObject(newValue)
       let previousValue = previousProps[key]
@@ -98,8 +121,43 @@ open class ExpoFabricView: ExpoFabricViewObjC, AnyExpoView {
         try? prop.set(value: convertedNewValue, onView: self, appContext: context)
 
         previousProps[key] = convertedNewValue
+        ViewPropsBenchmark.legacyPropCount += 1
       }
     }
+  }
+
+  /**
+   Applies view props that were decoded straight from their JavaScript values on the
+   JavaScript thread (see the JSI view-props decoding design). The values are already in
+   their native representation, so this only runs each prop's setter — no `cast` happens
+   here. Props not present in `decodedProps` are handled by `updateProps(_:)` as before.
+   */
+  @MainActor
+  @objc
+  public override func applyDecodedProps(_ decodedProps: DecodedViewProps) {
+    guard let context = appContext, let propsDict = viewManagerPropDict else {
+      return
+    }
+    let applyStart = mach_absolute_time()
+
+    var handledKeys: Set<String> = []
+    for (key, value) in decodedProps.values {
+      guard let prop = propsDict[key] else {
+        continue
+      }
+      // Record the key so the subsequent `updateProps(_:)` pass skips it, even when the
+      // value is unchanged (we still "own" it this pass).
+      handledKeys.insert(key)
+      let previousValue = previousProps[key]
+
+      if !areValuesEqual(previousValue, value) {
+        // TODO: @tsapeta: Figure out better way to rethrow errors from here.
+        try? prop.applyDecoded(value: value, onView: self, appContext: context)
+        previousProps[key] = value
+      }
+    }
+    jsThreadDecodedKeys = handledKeys
+    ViewPropsBenchmark.applyTicks += mach_absolute_time() - applyStart
   }
 
   /**
@@ -183,6 +241,7 @@ open class ExpoFabricView: ExpoFabricViewObjC, AnyExpoView {
     if let viewClass = viewClassesRegistry[className] {
       inject(appContext: appContext)
       injectInitializer(appContext: appContext, moduleName: moduleName, viewName: viewName, toViewClass: viewClass)
+      registerPropsDictForJSIDecoding(appContext: appContext, moduleName: moduleName, viewName: viewName, className: className)
       return viewClass
     }
     guard let viewClass = objc_allocateClassPair(ExpoFabricView.self, className, 0) else {
@@ -190,6 +249,7 @@ open class ExpoFabricView: ExpoFabricViewObjC, AnyExpoView {
     }
     inject(appContext: appContext)
     injectInitializer(appContext: appContext, moduleName: moduleName, viewName: viewName, toViewClass: viewClass)
+    registerPropsDictForJSIDecoding(appContext: appContext, moduleName: moduleName, viewName: viewName, className: className)
 
     // Save the allocated view class in the registry for the later use (e.g. when the app is reloaded).
     viewClassesRegistry[className] = viewClass
@@ -203,6 +263,20 @@ open class ExpoFabricView: ExpoFabricViewObjC, AnyExpoView {
     let appContextBlock: @convention(block) () -> AppContext? = { weakAppContext }
     let appContextBlockImp: IMP = imp_implementationWithBlock(appContextBlock)
     class_replaceMethod(object_getClass(ExpoFabricView.self), #selector(appContextFromClass), appContextBlockImp, "@@:")
+  }
+
+  /**
+   Resolves the prop definitions for the given module/view and caches them under the dynamic
+   view class name, so JSI view-props decoding can look them up at Fabric props-parse time
+   (before any view instance exists). Best-effort: silently does nothing if the module or
+   view definition can't be resolved.
+   */
+  internal static func registerPropsDictForJSIDecoding(appContext: AppContext, moduleName: String, viewName: String, className: String) {
+    guard let moduleHolder = appContext.moduleRegistry.get(moduleHolderForName: moduleName),
+          let viewDefinition = moduleHolder.definition.views[viewName] else {
+      return
+    }
+    ViewPropsJSIDecoder.register(propsDict: viewDefinition.propsDict(), forClassName: className)
   }
 
   internal static func injectInitializer(appContext: AppContext, moduleName: String, viewName: String, toViewClass viewClass: AnyClass) {
