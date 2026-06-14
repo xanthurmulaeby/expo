@@ -3,6 +3,7 @@
 ## Unpublished
 
 ### 🛠 Breaking changes
+cd /home/user/scooter-tweaker/packages/mobile && bunx expo install --check
 
 ### 🎉 New features
 
